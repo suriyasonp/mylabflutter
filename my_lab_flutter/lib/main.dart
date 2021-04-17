@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "My Data",
+      title: "My Factory",
       home: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -37,8 +37,7 @@ class MyApp extends StatelessWidget {
                 style: TextStyle(color: Colors.grey.shade600, fontSize: 30),
               ),
               Image(
-                image: NetworkImage(
-                    "https://image.freepik.com/free-vector/group-analysts-working-graphs_1262-21249.jpg"),
+                image: AssetImage('assets/images/data.jpg'),
                 width: 200,
               )
             ],
