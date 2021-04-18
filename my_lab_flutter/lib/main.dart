@@ -58,16 +58,20 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {
-            if (number >= 10) {
-              number = 0;
-            } else {
-              number++;
-            }
-          });
+          addNumber();
         },
         child: Icon(Icons.add),
       ),
     );
+  }
+
+  void addNumber() {
+    setState(() {
+      if (number >= 10) {
+        number = 0;
+      } else {
+        number++;
+      }
+    });
   }
 }
