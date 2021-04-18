@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'FoodMenu.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,57 +22,32 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int number = 0;
+  List<FoodMenu> menu = [
+    FoodMenu("กุ้งเผา", "500"),
+    FoodMenu("ปลาเผา", "280"),
+    FoodMenu("ทอดมันกุ้ง", "180")
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "My Factory",
-          style: TextStyle(color: Colors.grey.shade800),
+        appBar: AppBar(
+          title: Text(
+            "เลือกรายการอาหาร",
+            style: TextStyle(color: Colors.grey.shade800, fontSize: 26),
+          ),
         ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Data is being updated.",
-              style: TextStyle(color: Colors.grey.shade600, fontSize: 30),
-            ),
-            Text(
-              "Please wait.",
-              style: TextStyle(color: Colors.grey.shade600, fontSize: 30),
-            ),
-            Image(
-              image: AssetImage('assets/images/data.jpg'),
-              width: 200,
-            ),
-            Text(''),
-            Text("Press a button to increase a number.",
-                style: TextStyle(color: Colors.grey.shade600, fontSize: 18)),
-            Text(number.toString(),
-                style: TextStyle(color: Colors.grey.shade600, fontSize: 35))
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          addNumber();
-        },
-        child: Icon(Icons.add),
-      ),
-    );
-  }
-
-  void addNumber() {
-    setState(() {
-      if (number >= 10) {
-        number = 0;
-      } else {
-        number++;
-      }
-    });
+        body: ListView.builder(
+            itemCount: menu.length,
+            itemBuilder: (BuildContext context, int index) {
+              FoodMenu food = menu[index];
+              return ListTile(
+                title: Text(
+                  food.name,
+                  style: TextStyle(fontSize: 26),
+                ),
+                subtitle: Text("ราคา " + food.price + " บาท"),
+              );
+            }));
   }
 }
